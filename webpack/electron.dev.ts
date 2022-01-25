@@ -49,7 +49,7 @@ export default {
     static: {
       publicPath: "/",
     },
-    onBeforeSetupMiddleware() {
+    setupMiddlewares(middlewares: any, devServer: any) {
       console.log("Starting Electron...");
       spawn("yarn", ["electron:dev"], {
         shell: true,
@@ -58,6 +58,8 @@ export default {
       })
         .on("close", (code) => process.exit(code!))
         .on("error", (error) => console.error(error));
+
+      return middlewares;
     },
   },
 } as webpack.Configuration;

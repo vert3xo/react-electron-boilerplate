@@ -11,6 +11,6 @@ export default {
   },
   output: {
     path: paths.electronBuildPath,
-    filename: "[name].[fullhash].js",
+    filename: "[name].js",
   },
 } as webpack.Configuration;

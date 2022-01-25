@@ -14,7 +14,11 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL("http://localhost:3000");
+  mainWindow.loadURL(
+    isDev
+      ? "http://localhost:3000"
+      : `file://${path.join(__dirname, "../react/index.html")}`
+  );
 
   // Open the DevTools.
   isDev && mainWindow.webContents.openDevTools();

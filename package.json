@@ -21,8 +21,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron:dev": "electron -r ts-node/register/transpile-only electron/electron.ts",
-    "webpack:dev": "webpack serve --config ./webpack/electron.dev.ts"
+    "electron:dev": "electron -r ts-node/register/transpile-only electron/main.ts",
+    "electron:build": "webpack --config ./webpack/electron.prod.ts",
+    "react:dev": "webpack serve --config ./webpack/electron.dev.ts",
+    "react:build": "webpack --config ./webpack/react.prod.ts"
   },
   "eslintConfig": {
     "extends": [

@@ -1,28 +1,27 @@
 import * as webpack from "webpack";
 import * as path from "path";
 
-import { spawn } from "child_process";
-
 import paths from "./webpacks.paths";
+
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 export default {
-  mode: "development",
+  mode: "production",
   target: ["web"],
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   entry: path.resolve(paths.reactPath, "index.tsx"),
   output: {
-    path: paths.reactBuildPath,
+    path: path.resolve(paths.reactBuildPath),
+    publicPath: "./",
     filename: "[name].[fullhash].js",
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: ["ts-loader"],
+        use: "ts-loader",
       },
       {
         test: /\.css$/,
@@ -36,28 +35,8 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      filename: "index.html",
       template: path.resolve(paths.publicPath, "index.ejs"),
-      favicon: path.resolve(paths.publicPath, "favicon.ico"),
     }),
-    new ReactRefreshWebpackPlugin(),
   ],
-  devServer: {
-    port: 3000,
-    hot: true,
-    compress: true,
-    historyApiFallback: true,
-    static: {
-      publicPath: "/",
-    },
-    onBeforeSetupMiddleware() {
-      console.log("Starting Electron...");
-      spawn("yarn", ["electron:dev"], {
-        shell: true,
-        env: process.env,
-        stdio: "inherit",
-      })
-        .on("close", (code) => process.exit(code!))
-        .on("error", (error) => console.error(error));
-    },
-  },
 } as webpack.Configuration;

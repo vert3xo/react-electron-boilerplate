@@ -28,8 +28,8 @@ export default {
         use: "ts-loader",
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        test: /\.s?(c|a)ss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,

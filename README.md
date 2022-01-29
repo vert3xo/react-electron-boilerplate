@@ -14,7 +14,8 @@ Disclaimer: This project uses `yarn` do **NOT** use `npm`
 # Packaging
 
 `yarn package` creates a package for the platform you're currently using.
-To build for other platform use `yarn package:<platform>` or `yarn package:all`
+
+To build for other platforms use `yarn package:<platform>` or `yarn package:all`
 
 # Folder Structure
 

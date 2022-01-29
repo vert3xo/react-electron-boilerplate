@@ -4,6 +4,10 @@ import * as path from "path";
 import paths from "./webpacks.paths";
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import TerserPlugin from "terser-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 
 export default {
   mode: "production",
@@ -25,7 +29,7 @@ export default {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,
@@ -38,5 +42,13 @@ export default {
       filename: "index.html",
       template: path.resolve(paths.publicPath, "index.ejs"),
     }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: process.env.ANALYZE === "true" ? "server" : "disabled",
+    }),
+    new MiniCssExtractPlugin({ filename: "style.css" }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({ parallel: true }), new CssMinimizerPlugin()],
+  },
 } as webpack.Configuration;

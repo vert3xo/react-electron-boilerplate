@@ -4,7 +4,7 @@
 
 # TODO
 
-- [ ] Webpack Bundle Analyzer
-- [ ] Webpack Terser Plugin
-- [ ] Mini CSS Extract Plugin
-- [ ] CSS Minimizer Webpack Plugin
+- [x] Webpack Bundle Analyzer
+- [x] Webpack Terser Plugin
+- [x] Mini CSS Extract Plugin
+- [x] CSS Minimizer Webpack Plugin

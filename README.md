@@ -13,9 +13,10 @@ Disclaimer: This project uses `yarn` do **NOT** use `npm`
 
 # Packaging
 
-`yarn package` creates a package for the platform you're currently using, to build for other platform use `yarn package:<platform>` or `yarn package:all`
+`yarn package` creates a package for the platform you're currently using.
+To build for other platform use `yarn package:<platform>` or `yarn package:all`
 
-# File Structure
+# Folder Structure
 
 - `electron` contains all Electron code
 - `src` contains all React code

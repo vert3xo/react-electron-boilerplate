@@ -29,7 +29,24 @@ export default {
       },
       {
         test: /\.s?(c|a)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              import: true,
+              modules: true,
+              importLoaders: 1,
+            },
+          },
+          "sass-loader",
+        ],
+        include: /\.module\.s?(c|a)ss/,
+      },
+      {
+        test: /\.s?(c|a)ss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        exclude: /\.module\.s?(c|a)ss$/,
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/,

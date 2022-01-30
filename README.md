@@ -22,8 +22,8 @@ To build for other platforms use `yarn package:<platform>` or `yarn package:all`
 - `build` contains compiled code for both React and Electron (`yarn build`)
 - `dist` contains packaged Electron application (`yarn package`)
 - `electron` contains all Electron code
-- `src` contains all React code
 - `public` React public files
+- `src` contains all React code
 - `webpack` Webpack configuration
 
 # TODO

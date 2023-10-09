@@ -1,3 +1,6 @@
+# Create React App
+This project is using `create-react-app` which is not really recommended anymore. Maybe I'll make something similar for Vite.
+
 # React Electron Boilerplate
 
 [electron-react-boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate) was a little too complex so I made my own :)
